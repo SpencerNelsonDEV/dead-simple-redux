@@ -1,17 +1,42 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+// import { createStore } from 'redux'
+// import { Provider } from 'react-redux'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const bgStyle = {
+  backgroundColor: "pink",
+  width: "100vw",
+  height: "100vh",
+  position: "relative",
+};
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const circleStyle = {
+  backgroundColor: "blue",
+  width: "50px",
+  height: "50px",
+  borderRadius: "25px",
+  position: "absolute",
+};
+class App extends Component {
+  state = {
+    x: 500,
+    y: 250,
+  };
+
+  render() {
+    const { x, y } = this.state;
+    return (
+      <div style={bgStyle}>
+        <div
+          style={{
+            ...circleStyle,
+            left: `${x}px`,
+            top: `${y}px`,
+          }}
+        ></div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
